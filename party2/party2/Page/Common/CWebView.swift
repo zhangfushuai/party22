@@ -24,7 +24,15 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
         
 
     }
-    
+    lazy var cookieString:String! = {
+        let cookiesStorage = HTTPCookieStorage.shared
+        var cookieStr = ""
+        cookiesStorage.cookies?.forEach({ cookie in
+            cookieStr += "\(cookie.name)=\(cookie.value);"
+        })
+        return cookieStr
+    }()
+
     func theWebView() {
         config = WKWebViewConfiguration()
         
@@ -33,7 +41,13 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
         config.userContentController.add(self, name: "native")
         config.userContentController.add(self, name: "redirect")
         config.userContentController.add(self, name: "upload")//上传图片 视频 音频
+        
+        //cookie方法
+        let userScript = WKUserScript(source: cookieString, injectionTime: .atDocumentStart, forMainFrameOnly: false)
+        config.userContentController.addUserScript(userScript)
 
+        
+        
         appWebView = WKWebView(frame: self.view.frame,configuration: config)
         appWebView.navigationDelegate = self
         appWebView.uiDelegate = self

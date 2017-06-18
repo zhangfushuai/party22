@@ -38,10 +38,13 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
         
         //注册js方法
         
+
+        
+        
         config.userContentController.add(self, name: "native")
         config.userContentController.add(self, name: "redirect")
-        config.userContentController.add(self, name: "upload")//上传图片 视频 音频
-        
+        config.userContentController.add(self, name: "CNative")//上传图片 视频 音频
+
         //cookie方法
         let userScript = WKUserScript(source: cookieString, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         config.userContentController.addUserScript(userScript)
@@ -99,8 +102,13 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
             }
         }
     }
+
+
+
     
-    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+
+    
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "redirect" {
             var vc = UIViewController()
             let dic = message.body as! NSDictionary
@@ -143,14 +151,29 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
 //                        }
 //                    }
                 
-            } else if message.name == "upload" {
+            } else if message.name == "choosePhoto" {
                 self.present(UploadViewController(), animated: true, completion: nil)
             } else {
                 print("类未找到！")
             }
+        }else if message.name == "CNative" {
+            
+            let dic = message.body as! String
+            if dic == "choosePhoto" {
+                self.choosePhoto()
+            }
+            
+            
         }
     }
     
+    func choosePhoto() {
+        let uploadVC = UploadViewController()
+        uploadVC.webview = self.appWebView
+        self.present(uploadVC, animated: true, completion: nil)
+
+        
+    }
     
     // MARK: - WKUIDelegate
     open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -162,9 +185,8 @@ open class CWebView: UIViewController,WKScriptMessageHandler,WKUIDelegate,WKNavi
         let alert = UIAlertController(title: "提醒", message: "\(message)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "确定", style: .default, handler:nil))
         alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
-        self.present(UploadViewController(), animated: true, completion: nil)
 
         
     }

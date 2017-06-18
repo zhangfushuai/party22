@@ -5,12 +5,12 @@
 //  Created by shuai on 2017/5/15.
 //  Copyright © 2017年 chinsoft. All rights reserved.
 //
-
+import WebKit
 import UIKit
 
 class UploadViewController: UIViewController {
     var picker: QPPhotoPickerView?
-
+    weak var webview:WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.cyan
@@ -63,10 +63,31 @@ class UploadViewController: UIViewController {
         self.view.makeToastActivity(.center)
         CCore.uploadDatas(dataArray) { (Attachment) in
            self.view.hideToastActivity()
-            self.view.makeToast("上传成功", duration: 10, position:.center)
+            self.view.makeToast("上传成功", duration: 2, position:.center)
 //            UIAlertView(title: nil, message: "上传成功", delegate: nil, cancelButtonTitle: "确定").show()
 
             print(Attachment)
+            var str = ""
+            for  att in Attachment {
+
+                
+                str += "'\(att.ID!)'"
+                
+                str += ","
+            }
+            
+            
+            str = str.subStr(0, end: str.length-1)
+            var jsstr = String(format: "window['CNativeAction'].pushAttachmentBack(%@);", arguments: [str as CVarArg])
+            
+            self.webview.evaluateJavaScript(jsstr, completionHandler: { (aa,bb) in
+                
+                
+                
+            })
+            
+            
+            
             
         }
         

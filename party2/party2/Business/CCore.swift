@@ -92,20 +92,25 @@ public class CCore {
          )*/
     }
     
-    open static func uploadDatas(_ datas:[Data],completeHandler:@escaping (_ data: Attachment) ->Void) {
+    open static func uploadDatas(_ datas:[Data],completeHandler:@escaping (_ data: [Attachment]) ->Void) {
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 for i in 0..<datas.count {
-                    multipartFormData.append(datas[i], withName: "uploadFile", fileName: "haha", mimeType: "image/png")
+                    let name = String(format: "%ld", arguments: [arc4random()])
+                    
+                    multipartFormData.append(datas[i], withName: "uploadFile", fileName: name, mimeType: "image/png")
                 }
         },
-            to: getWebApi("file/upload"),
+            to: getWebApi("file/uploads"),
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
                         debugPrint(response)
-                        completeHandler(Mapper<Attachment>().map(JSON: response.result.value as! [String : Any])!)
+                        
+
+                        
+                        completeHandler(Mapper<Attachment>().mapArray(JSONArray: response.result.value as! [[String : Any]])!)
                         //completeHandler(Mapper<Attachment>().map(response.result.value)!)
                         
                     }

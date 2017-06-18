@@ -10,7 +10,6 @@
 		22534F201EF38AE300E8CB94 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22534F1C1EF38A9D00E8CB94 /* Alamofire.framework */; };
 		22534F211EF38AE300E8CB94 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22534F1C1EF38A9D00E8CB94 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22534F221EF38AE300E8CB94 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22534F1D1EF38A9D00E8CB94 /* ObjectMapper.framework */; };
-		22534F231EF38AE300E8CB94 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22534F1D1EF38A9D00E8CB94 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22534F251EF3A81B00E8CB94 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22534F241EF3A81B00E8CB94 /* Toast.swift */; };
 		22A1E0741ECA8BD8008D45D9 /* QPPhotoImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1E04D1ECA8BD8008D45D9 /* QPPhotoImageModel.swift */; };
 		22A1E0751ECA8BD8008D45D9 /* QPPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1E04E1ECA8BD8008D45D9 /* QPPhotoModel.swift */; };
@@ -41,12 +40,15 @@
 		22A1E08E1ECA8BD8008D45D9 /* QPPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1E0721ECA8BD8008D45D9 /* QPPhotoCell.swift */; };
 		22A1E08F1ECA8BD8008D45D9 /* QPPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A1E0731ECA8BD8008D45D9 /* QPPhotoCell.xib */; };
 		22A1E0951ECA90AE008D45D9 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1E0941ECA90AE008D45D9 /* UploadViewController.swift */; };
+		22AA93921EF4C88E00785DB0 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22534F1D1EF38A9D00E8CB94 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22AA93971EF5217C00785DB0 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AA93951EF51E4B00785DB0 /* SnapKit.framework */; };
+		22AA93981EF5217C00785DB0 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22AA93951EF51E4B00785DB0 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22AA939A1EF5371600785DB0 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 22AA93991EF5371600785DB0 /* www */; };
 		8908A15F1EA19B8900ED22AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908A15E1EA19B8900ED22AD /* AppDelegate.swift */; };
 		8908A1641EA19B8900ED22AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8908A1621EA19B8900ED22AD /* Main.storyboard */; };
 		8908A1661EA19B8900ED22AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8908A1651EA19B8900ED22AD /* Assets.xcassets */; };
 		8908A1691EA19B8900ED22AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8908A1671EA19B8900ED22AD /* LaunchScreen.storyboard */; };
 		8908A1711EA19BAE00ED22AD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8908A1701EA19BAE00ED22AD /* Info.plist */; };
-		8908A17B1EA19BEE00ED22AD /* www in Resources */ = {isa = PBXBuildFile; fileRef = 8908A17A1EA19BEE00ED22AD /* www */; };
 		C717E0AF1EC95FFC005DC37B /* CExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717E0AE1EC95FFC005DC37B /* CExtension.swift */; };
 		C717E0B11EC96010005DC37B /* CCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717E0B01EC96010005DC37B /* CCore.swift */; };
 		C717E0B31EC96025005DC37B /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717E0B21EC96025005DC37B /* Dashboard.swift */; };
@@ -62,7 +64,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				22534F231EF38AE300E8CB94 /* ObjectMapper.framework in Embed Frameworks */,
+				22AA93981EF5217C00785DB0 /* SnapKit.framework in Embed Frameworks */,
+				22AA93921EF4C88E00785DB0 /* ObjectMapper.framework in Embed Frameworks */,
 				22534F211EF38AE300E8CB94 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -103,13 +106,14 @@
 		22A1E0721ECA8BD8008D45D9 /* QPPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPPhotoCell.swift; sourceTree = "<group>"; };
 		22A1E0731ECA8BD8008D45D9 /* QPPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QPPhotoCell.xib; sourceTree = "<group>"; };
 		22A1E0941ECA90AE008D45D9 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		22AA93951EF51E4B00785DB0 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		22AA93991EF5371600785DB0 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		8908A15B1EA19B8900ED22AD /* party2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = party2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8908A15E1EA19B8900ED22AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8908A1631EA19B8900ED22AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8908A1651EA19B8900ED22AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8908A1681EA19B8900ED22AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8908A1701EA19BAE00ED22AD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8908A17A1EA19BEE00ED22AD /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		C717E0AE1EC95FFC005DC37B /* CExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CExtension.swift; path = Business/CExtension.swift; sourceTree = "<group>"; };
 		C717E0B01EC96010005DC37B /* CCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCore.swift; path = Business/CCore.swift; sourceTree = "<group>"; };
 		C717E0B21EC96025005DC37B /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dashboard.swift; path = Page/Common/Dashboard.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AA93971EF5217C00785DB0 /* SnapKit.framework in Frameworks */,
 				22534F221EF38AE300E8CB94 /* ObjectMapper.framework in Frameworks */,
 				22534F201EF38AE300E8CB94 /* Alamofire.framework in Frameworks */,
 			);
@@ -293,8 +298,8 @@
 			children = (
 				C74377AC1EC955BA0033578A /* Business */,
 				C74377AA1EC955850033578A /* Page */,
+				22AA93991EF5371600785DB0 /* www */,
 				C74377A71EC9553A0033578A /* Entity */,
-				8908A17A1EA19BEE00ED22AD /* www */,
 				8908A15E1EA19B8900ED22AD /* AppDelegate.swift */,
 				8908A1621EA19B8900ED22AD /* Main.storyboard */,
 				8908A1651EA19B8900ED22AD /* Assets.xcassets */,
@@ -307,6 +312,7 @@
 		C7186A121EADEA5700132401 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22AA93951EF51E4B00785DB0 /* SnapKit.framework */,
 				22534F1C1EF38A9D00E8CB94 /* Alamofire.framework */,
 				22534F1D1EF38A9D00E8CB94 /* ObjectMapper.framework */,
 			);
@@ -420,7 +426,7 @@
 				22A1E07C1ECA8BD8008D45D9 /* image_select@2x.png in Resources */,
 				22A1E0801ECA8BD8008D45D9 /* picture_unselect@2x.png in Resources */,
 				8908A1661EA19B8900ED22AD /* Assets.xcassets in Resources */,
-				8908A17B1EA19BEE00ED22AD /* www in Resources */,
+				22AA939A1EF5371600785DB0 /* www in Resources */,
 				22A1E08F1ECA8BD8008D45D9 /* QPPhotoCell.xib in Resources */,
 				22A1E0771ECA8BD8008D45D9 /* QPPickerCell.xib in Resources */,
 				8908A1641EA19B8900ED22AD /* Main.storyboard in Resources */,

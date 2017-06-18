@@ -9,7 +9,7 @@ import UIKit
 import Photos
 import AVKit
 import AVFoundation
-
+import SnapKit
 private let reuseIdentifier = "QPPickerCell"
 
 enum UploadType {
@@ -33,6 +33,9 @@ class QPPhotoPickerView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     var videourl:URL?
     var audiourl:URL?
+
+    var movieIV: UIImageView?
+    var audioView: UIView?
 
     
     init(controller: UIViewController, frame: CGRect) {
@@ -127,6 +130,8 @@ class QPPhotoPickerView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func add() {
+        self.addPic()
+        return
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "拍照", style: .default, handler:{(alert) in
@@ -197,6 +202,7 @@ class QPPhotoPickerView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionView?.isHidden = true
         
         let movieIV = UIImageView(frame: CGRect(x: 20, y: 20, width: UIScreen.main.bounds.width-40, height: 200))
+        self.movieIV = movieIV
         self.addSubview(movieIV)
         movieIV.image = self.getVideoImage(self.videourl!)
         movieIV.isUserInteractionEnabled = true
@@ -204,6 +210,17 @@ class QPPhotoPickerView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         let playIV = UIImageView(frame: CGRect(x: (movieIV.bounds.width-100)/2, y: (movieIV.bounds.height-100)/2, width: 100, height: 100))
         playIV.image = #imageLiteral(resourceName: "video-play")
         movieIV.addSubview(playIV)
+        
+        let closeBtn = UIButton()
+        movieIV.addSubview(closeBtn)
+        closeBtn.setBackgroundImage(#imageLiteral(resourceName: "btn_close"), for: .normal)
+        closeBtn.addTarget(self, action: #selector(deleteMovie), for: .touchUpInside)
+        closeBtn.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.height.equalTo(44)
+        }
+        
         playIV.isUserInteractionEnabled = true
         let ges = UITapGestureRecognizer(target: self, action: #selector(playMovie))
         playIV.addGestureRecognizer(ges)
@@ -217,19 +234,18 @@ class QPPhotoPickerView: UIView, UICollectionViewDelegate, UICollectionViewDataS
 
     
     func playMovie(){
-        
         let playerViewController = AVPlayerViewController()
         playerViewController.player = AVPlayer(url: self.videourl!)
 
         self.controller?.present(playerViewController, animated: true, completion: {
             playerViewController.player?.play()
         })
-        
-        
-        
+    }
+    func deleteMovie() {
+        self.movieIV?.removeFromSuperview()
+        self.collectionView?.isHidden = false
         
     }
-    
     
     
     
